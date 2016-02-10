@@ -1,0 +1,47 @@
+<html> 
+<head> 
+
+	<title> TP Ajax 3a3 </title>
+	<script>
+	function changement()
+	{
+		var pays=document.getElementById("pays").value;
+		var xhr= new XMLHttpRequest();
+		var url="ville.php?id="+pays;
+		xhr.open('GET',url,true);
+		xhr.onreadystatechange=function()
+		{	
+			
+			if(xhr.status==200)
+			{	
+			alert("cc");
+				if(xhr.readyState==4)
+				{
+					alert("cc1");
+					document.getElementById("ville").innerHTML=xhr.responseText;
+				}
+			}
+		
+		}
+		xhr.send();
+	}
+	</script>
+
+</head>
+
+<body>
+	list des pays
+
+	<select id="pays" onChange="changement()">
+		<option value="1">France</option>
+		<option value="2">Tunisie</option>
+	</select>
+
+	<select id="ville">
+	
+	</select>
+</body>
+</html>
+
+
+</html>

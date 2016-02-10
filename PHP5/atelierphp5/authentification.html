@@ -1,0 +1,33 @@
+<?php ?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Authentification</title>
+    </head>
+<body>
+    	<header id="head" >
+        	<h1>Espace Administrateur</h1>
+        </header>
+        	
+    	<form method="post" action="VerifAuthAdmin.php">
+            <fieldset>
+            <legend> Authentification </legend>
+            <table>
+                <tr>
+                    <td> <label for="usr">Login : </label> </td> 
+                    <td> <input type="text" maxlength="30" required autofocus name="login1" /> </td>
+                </tr>
+                <tr>
+                    <td> <label for="passwd">Mot de passe : </label> </td> 
+                    <td> <input type="password" maxlength="30" required name="password1" /> </td>
+                </tr>
+                <tr>
+                    <td> <input type="submit" value="Valider" /></td> 
+                    <td> <p><a href="inscription.html">S'inscrire</a></p></td>
+                </tr>               	
+            </table>
+            </fieldset>            
+     	</form>
+	</body>
+</html>

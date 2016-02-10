@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>jQuery</title>
+
+        <style>
+			/* Une fois l'allure générale est là, on attribut 1 point CSS voir détailles en bas*/
+			img
+			{
+				width:300px;
+				height:300px;
+				border-radius:200px; /*(0.25pt)*/
+				margin-top:70px; /*(0.25pt)*/
+			}
+			#left
+			{
+				border-radius:10px;
+				border-color:#F00; /*(0.25pt)*/
+				background-color:#FFF; /*(0.25pt)*/
+				color:#F00;
+			}
+			#right
+			{
+				border-radius:10px;
+				border-color:#F00;
+				background-color:#FFF;
+				color:#F00;
+			}
+			#hide
+			{
+				border-radius:10px;
+				border-color:#F00;
+				background-color:#FFF;
+				color:#F00;
+			}
+			#galerie
+			{
+				position:fixed;
+				width:50%;
+				height:70%;
+				background:#999;
+				opacity:0.8;
+				margin-left:350px;
+			}
+        </style>
+
+        <script type="text/javascript" src="jquery-2.2.0.js"></script>
+        <script  type="text/javascript">
+			$(document).ready(function() {
+
+				//A l'état initial la division galerie est cachée 0.5pt
+				$("#galerie").hide();
+
+				//Coloration du titre: "Afficher la galerie" 0.5pt =0.25pt couleur bleu + 0.25pt couleur rouge
+				$("h1").mouseover(
+				function()
+				{
+					$(this).css("color","blue");
+					$(this).mouseleave(
+						function()
+						{
+							$(this).css("color","red");
+						}
+					);
+				});
+
+				//Affichage de la division galerie (2pt) voir détailles barème en bas
+				$("h1").click(
+					function()
+					{
+						 $("#galerie").show(); //(0.25pt)
+					}
+				);
+
+							//Préparation de la boucle de la galerie: défilement vers la droite (4.5pt) voir détailles barème sur le code
+							var imgName=["imag1.jpg", "imag2.jpg", "imag0.jpg"]; /*(0.5pt)*/
+							var index=0;
+
+							$("#right").click(
+								function()
+								{
+									// Savoir utiliser la fonction fadeOut(1pt)
+									$("img").fadeOut(100,
+										function()
+										{
+											//Savoir utiliser la fonction attr (1pt)
+											$("img").attr( "src", imgName[index]);
+											//(0.5pt)
+											index++;
+											//Savoir assurer le défilement des images peu importe la méthode! ici on a une manière de faire (entre autres)(1pt)
+											if(index >2){index= 0;}
+												//(0.5pt)
+												$("img").fadeIn(100);
+										}
+									);
+								}
+							);
+
+							//Préparation de la boucle de la galerie: défilement vers la gauche (1pt) voir détailles barème sur le code
+							$("#left").click(
+								function()
+								{
+									$("img").fadeOut(100,
+										function()
+										{
+											$("img").attr( "src", imgName[index]);
+											//(0.5pt)
+											index--;
+											//(0.5pt)
+											if(index < 0){index= 2;}
+												$("img").fadeIn(100);
+										}
+									);
+								}
+							);
+				//Cacher la galerie (0.5pt)
+				 $("#hide").click(function(){
+					 $("div").hide();
+				})
+			});
+        </script>
+    </head>
+    <body>
+    	<center>
+            <div id="galerie">
+                <button id="left"> << </button>
+                    <img src="imag0.jpg">
+                <button id="right"> >> </button> <br> <br>
+
+                <input type="button" id="hide" value="cacher">
+            </div>
+
+            <h1> Afficher la galerie </h1>
+        <center>
+    </body>
+</html>
